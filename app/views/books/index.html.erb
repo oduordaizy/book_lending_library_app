@@ -1,6 +1,9 @@
-<h1>Book List</h1>
+<h1 class="book-list-title">Book List</h1>
 
-<%= link_to 'Add New Book', new_book_path, class: 'btn btn-primary' %>
+<div class="bookContainer">
+
+<%= link_to '+ Add New', new_book_path, class: 'addBook' %>
+
 
 <table>
   <tr>
@@ -15,9 +18,14 @@
       <td><%= book.author %></td>
       <td><%= book.available ? 'Yes' : 'No' %></td>
       <td>
-        <%= link_to 'Edit', edit_book_path(book) %> |
-        <%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to edit_book_path(book), class: 'edit-link' do %>
+        <i class="fa-regular fa-pen-to-square"></i>
+          <% end %> |
+        <%= link_to book, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
       </td>
     </tr>
   <% end %>
 </table>
+</div>
