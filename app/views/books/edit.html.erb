@@ -1,0 +1,21 @@
+<h1>Edit Book</h1>
+
+<%= form_with model: @book, local: true do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :author %><br>
+    <%= f.text_field :author %>
+  </p>
+  <p>
+    <%= f.label :available %>
+    <%= f.check_box :available %>
+  </p>
+  <p>
+    <%= f.submit 'Update Book' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back to List', books_path %>
