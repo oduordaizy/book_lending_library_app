@@ -1,10 +1,60 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+
+body{
+    background-color: #e7eaf6;
+}
+.home-container{  
+    height: 100vh;
+    border-radius: 8px;
+}
+.home-container h1{
+    text-align: center;
+    color: #113f67;
+}
+.homeContent{
+    display: flex;
+    /* justify-content: space-between; */
+}
+.actionButtons{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+.actionButtons .btn{
+    font-size: 1rem;
+    padding: 30px 40px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    background: #113f67;
+    text-decoration: none;
+}
+.actionButtons .btn:hover{
+    border: 1px #38598b solid;
+    background: #38598b;
+    font-weight: bold;   
+}
+
+/**********Books Index.html ****************/
+.book-list-title{
+    color:#113f67;
+    text-align: center;
+}
+.addBook{
+    background-color: #38598b;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+.bookContainer{
+    width: 60%;
+    margin: 30px auto;
+    /* background: #a2a8d3; */
+    border-radius: 8px;
+    padding: 20px;    
+}
+
