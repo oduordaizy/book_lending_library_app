@@ -61,6 +61,29 @@ class BooksController < ApplicationController
     end
   end
 
+  def borrow
+    if @book.available?
+      @book.lending_histories.create(
+        borrower_name: params[:borrower_name],
+        borrowed_at: Time.current
+      )
+      redirect_to @book, notice: "Book has been borrowed"
+    else
+        redirect_to @book, notice: "Book has is already borrowed"
+    end
+  end
+
+  def return_book
+    most_recent = @book.lending_histories.where(returned_at: nil).last
+
+    if most_recent
+      most_recent.update(returned_at: Time.current)
+      redirect_to @book, notice: "Book has been returned."
+    else
+      redirect_to @book, alert: "This book is not currently borrowed."
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
