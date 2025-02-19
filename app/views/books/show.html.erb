@@ -1,7 +1,30 @@
-<h1><%= @book.title %></h1>
+<h2><%= @book.title %></h2>
 <p><strong>Author:</strong> <%= @book.author %></p>
-<p><strong>Available:</strong> <%= @book.available ? 'Yes' : 'No' %></p>
 
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back to List', books_path %>
+<% if @book.available? %>
+  <%= form_with url: borrow_book_path(@book), method: :post do |form| %>
+    <%= form.label :borrower_name, "Enter borrower's name" %>
+    <%= form.text_field :borrower_name, required: true %>
+    <%= form.submit "Borrow", class: "btn btn-primary" %>
+  <% end %>
+<% else %>
+  <%= button_to "Return Book", return_book_path(@book), method: :post, class: "btn btn-warning" %>
+<% end %>
+
+<h3>Lending History</h3>
+<table>
+  <tr>
+    <th>Borrower</th>
+    <th>Borrowed At</th>
+    <th>Returned At</th>
+  </tr>
+  <% @lending_histories.each do |history| %>
+    <tr>
+      <td><%= history.borrower_name %></td>
+      <td><%= history.borrowed_at %></td>
+      <td><%= history.returned_at || "Not Returned" %></td>
+    </tr>
+  <% end %>
+</table>
+
 
