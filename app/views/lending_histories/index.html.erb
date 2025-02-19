@@ -1,0 +1,28 @@
+<h1>Borrowing History</h1>
+
+<%= form_with url: lending_histories_path, method: :get, local: true do |form| %>
+  <%= form.label :borrower_name, "Search by Borrower:" %>
+  <%= form.text_field :borrower_name, value: params[:borrower_name] %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Book Title</th>
+      <th>Borrower</th>
+      <th>Borrowed At</th>
+      <th>Returned At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @lending_histories.each do |history| %>
+      <tr>
+        <td><%= history.book.title %></td>
+        <td><%= history.borrower_name %></td>
+        <td><%= history.borrowed_at.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= history.returned_at.present? ? history.returned_at.strftime("%Y-%m-%d %H:%M") : "Not returned" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
