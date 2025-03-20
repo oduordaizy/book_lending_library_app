@@ -16,7 +16,7 @@ This is a simple **Book Lending Library** application built with **Ruby on Rails
 Ensure you have the following installed:
 - Ruby (>= 3.2)
 - Rails (>= 8.0)
-- PostgreSQL (or SQLite for development)
+- SQLite
 
 ### Setup
 1. Clone the repository:
@@ -93,9 +93,6 @@ app/assets/stylesheets/application.css
 3. Commit your changes (`git commit -m 'Add new feature'`)
 4. Push to the branch (`git push origin feature-branch`)
 5. Open a Pull Request
-
-## License
-This project is open-source and available under the **MIT License**.
 
 ## Contact
 For questions or suggestions, reach out via:
